@@ -1,3 +1,5 @@
+AddType application/javascript .mjs
+
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 AddDefaultCharset UTF-8
