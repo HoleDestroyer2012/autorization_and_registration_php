@@ -21,6 +21,7 @@ function registration_container() {
 }
 
 function login_container() {
+    alert('xyi');
     return false;
 }
 

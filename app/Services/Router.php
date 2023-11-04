@@ -17,7 +17,7 @@ class Router
     {
         $query = $_GET["q"];
         foreach (self::$list as $route) {
-            if ($route["post"] === true && $_SERVER["REQUEST_METHOD"] === "POST") {
+            if ($route["post"] === true && $_SERVER["REQUEST_METHOD"] === "POST" && $route["method"] === explode("/", $query)[1] && isset($route["method"])) {
                 $action = new $route["class"];
                 $method = $route["method"];
                 if ($route["formdata"] && $route["files"]) {
@@ -29,7 +29,7 @@ class Router
                 }
                 die;
             } else {
-                if ($route["uri"] === "/" . $query) {
+                if (isset($route["page_name"]) && $route["uri"] === "/" . $query) {
                     require_once "viewes/pages/" . $route["page_name"] . ".php";
                     die;
                 }
@@ -41,6 +41,7 @@ class Router
     {
         require_once "viewes/errors/404.php";
     }
+
     public static function post($uri, $class, $method, $formdata = false, $files = false)
     {
         self::$list[] = [
@@ -51,5 +52,10 @@ class Router
             "formdata" => $formdata,
             "files" => $files
         ];
+    }
+
+    public static function redirect($uri)
+    {
+        header("Location: http://registrationandautorizationphp/" . $uri);
     }
 }

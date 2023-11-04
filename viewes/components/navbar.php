@@ -11,8 +11,15 @@
                 </li>
             </ul>
             <form class="d-flex">
-                <a class="nav-link active m-2" href="login" type="submit">Login</a>
-                <a class="nav-link active m-2" href="register" type="submit">Register</a>
+                <?php
+                session_start();
+                if (isset($_SESSION["loggined"]) && $_SESSION["loggined"] === true) {
+                    echo '<a class="nav-link active m-2" href="profile" type="submit">Profile</a>';
+                } else {
+                    echo '<a class="nav-link active m-2" href="login" type="submit">Login</a>
+                <a class="nav-link active m-2" href="register" type="submit">Register</a>';
+                }
+                ?>
             </form>
         </div>
     </div>

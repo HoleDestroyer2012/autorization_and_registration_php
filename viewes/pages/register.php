@@ -2,7 +2,6 @@
 <html lang="ru">
 
 <?php
-
 use App\Services\Viewes;
 ?>
 

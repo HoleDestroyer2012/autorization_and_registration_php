@@ -10,9 +10,4 @@ class App
         "password" => "",
         "db" => "areaweb-auth",
     ];
-    public static function start()
-    {
-
-    }
-
 }
